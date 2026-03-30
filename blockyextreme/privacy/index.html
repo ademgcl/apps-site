@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blocky Extreme Privacy Policy</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #08111c;
+      --panel: rgba(11, 23, 36, 0.82);
+      --panel-strong: rgba(15, 29, 45, 0.92);
+      --line: rgba(255, 215, 133, 0.2);
+      --text: #eef6ff;
+      --muted: #b2c1d3;
+      --gold: #f4c76d;
+      --gold-soft: rgba(244, 199, 109, 0.18);
+      --sky: #8ed8ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(142, 216, 255, 0.14), transparent 28%),
+        radial-gradient(circle at 82% 10%, rgba(244, 199, 109, 0.14), transparent 22%),
+        linear-gradient(180deg, #112235 0%, var(--bg) 100%);
+    }
+
+    a {
+      color: var(--sky);
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(980px, calc(100% - 32px));
+      margin: 24px auto 40px;
+    }
+
+    .nav,
+    main {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      border-radius: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .crest {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: #1a1204;
+      background: linear-gradient(135deg, #fff0b7, #f2bd58 65%, #a96817);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 10px 30px rgba(242, 189, 88, 0.28);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    main {
+      margin-top: 18px;
+      padding: 32px;
+      border-radius: 30px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: #ffe7b4;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(34px, 7vw, 60px);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin: 28px 0 10px;
+      font-size: 21px;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 17px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .card {
+      padding: 18px 20px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: var(--panel-strong);
+    }
+
+    @media (max-width: 720px) {
+      main { padding: 24px; }
+      .nav { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav">
+      <div class="brand">
+        <div class="crest">BX</div>
+        <span>Blocky Extreme</span>
+      </div>
+      <div class="nav-links">
+        <a href="../">Overview</a>
+        <a href="../support/">Support</a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="eyebrow">Privacy Policy</div>
+      <h1>Blocky Extreme keeps the paid release simple.</h1>
+      <p>Effective date: March 29, 2026</p>
+
+      <div class="stack">
+        <section class="card">
+          <h2>Data Collection</h2>
+          <p>Blocky Extreme does not collect personal data from players.</p>
+        </section>
+        <section class="card">
+          <h2>Analytics and Tracking</h2>
+          <p>Blocky Extreme does not use third-party analytics SDKs, advertising SDKs, or cross-app tracking.</p>
+        </section>
+        <section class="card">
+          <h2>Accounts</h2>
+          <p>Blocky Extreme does not require account creation, cloud login, or sign-in to access the 9999-stage campaign or infinite mode.</p>
+        </section>
+        <section class="card">
+          <h2>Local Save Data</h2>
+          <p>The game stores progression such as unlocked stages, star ratings, and high scores locally on the device so the premium single-player experience works offline.</p>
+        </section>
+        <section class="card">
+          <h2>Contact</h2>
+          <p>For privacy questions, contact <a href="mailto:ademgcl@gmail.com">ademgcl@gmail.com</a>.</p>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blocky Extreme</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07111b;
+      --panel: rgba(10, 22, 36, 0.82);
+      --panel-strong: rgba(13, 27, 44, 0.92);
+      --line: rgba(255, 215, 133, 0.2);
+      --line-soft: rgba(255,255,255,0.08);
+      --text: #eef6ff;
+      --muted: #aec0d4;
+      --gold: #f5c86d;
+      --gold-soft: rgba(245, 200, 109, 0.18);
+      --sky: #8fdcff;
+      --mint: #93f0c3;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(143, 220, 255, 0.15), transparent 28%),
+        radial-gradient(circle at 82% 10%, rgba(245, 200, 109, 0.16), transparent 22%),
+        linear-gradient(180deg, #102133 0%, var(--bg) 100%);
+    }
+
+    a {
+      color: var(--sky);
+      text-decoration: none;
+    }
+
+    a:hover { color: #d7f3ff; }
+
+    .shell {
+      width: min(1200px, calc(100% - 32px));
+      margin: 24px auto 40px;
+    }
+
+    .nav,
+    .hero,
+    .section,
+    .shot {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      border-radius: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(245, 200, 109, 0.24);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      margin-top: 18px;
+      padding: 34px;
+      border-radius: 30px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -70px;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(245, 200, 109, 0.22), transparent 64%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: #ffe7b4;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      max-width: 780px;
+      font-size: clamp(42px, 9vw, 84px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+    }
+
+    .lede {
+      max-width: 720px;
+      font-size: 19px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .hero-grid,
+    .feature-grid,
+    .shots {
+      display: grid;
+      gap: 16px;
+    }
+
+    .hero-grid {
+      margin-top: 26px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .stat,
+    .feature,
+    .shot {
+      border-radius: 24px;
+      background: var(--panel-strong);
+      border: 1px solid var(--line-soft);
+    }
+
+    .stat,
+    .feature {
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 32px;
+      letter-spacing: -0.04em;
+    }
+
+    .stat span,
+    .feature p,
+    .section p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .cta,
+    .ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 12px 18px;
+      border-radius: 16px;
+      font-weight: 700;
+    }
+
+    .cta {
+      color: #1a1204;
+      background: linear-gradient(135deg, #fff0b3, #f0bc54 68%, #a96817);
+      box-shadow: 0 12px 30px rgba(240, 188, 84, 0.22);
+    }
+
+    .ghost {
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .section {
+      margin-top: 18px;
+      padding: 28px;
+      border-radius: 28px;
+    }
+
+    .section h2 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+    }
+
+    .feature-grid {
+      margin-top: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .feature h3,
+    .shot h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .shots {
+      margin-top: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .shot {
+      overflow: hidden;
+    }
+
+    .shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #07111b;
+    }
+
+    .shot-copy {
+      padding: 18px;
+    }
+
+    .foot {
+      margin-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .mint { color: var(--mint); }
+
+    @media (max-width: 720px) {
+      .hero,
+      .section { padding: 22px; }
+      .nav { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav">
+      <div class="brand">
+        <img src="media/icon-1024.png" alt="Blocky Extreme icon">
+        <span>Blocky Extreme</span>
+      </div>
+      <div class="nav-links">
+        <a href="support/">Support</a>
+        <a href="privacy/">Privacy</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="eyebrow">Premium Paid Edition</div>
+      <h1>Premium block puzzle design with a 9999-stage campaign.</h1>
+      <p class="lede">Blocky Extreme is the paid upgrade of the series: premium presentation, no ads, a massive stage vault, and an infinite mode that keeps escalating after the campaign grind begins to feel mastered.</p>
+
+      <div class="hero-grid">
+        <div class="stat">
+          <strong>9999</strong>
+          <span>hand-tuned progression targets built on deterministic procedural generation</span>
+        </div>
+        <div class="stat">
+          <strong>Infinite</strong>
+          <span>endless runs with score tracking, rising density, and repeatable mastery loops</span>
+        </div>
+        <div class="stat">
+          <strong>No Ads</strong>
+          <span>a direct paid experience with local saves and offline single-player focus</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="cta" href="support/">Get Support</a>
+        <a class="ghost" href="privacy/">Privacy Policy</a>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>Why this version feels premium</h2>
+      <div class="feature-grid">
+        <article class="feature">
+          <h3>Sharper Art Direction</h3>
+          <p>Metallic block treatments, richer contrast, premium gold accents, and a reworked crest-based identity instead of the lighter original presentation.</p>
+        </article>
+        <article class="feature">
+          <h3>Long-Form Campaign</h3>
+          <p>The campaign now stretches to <span class="mint">stage 9999</span>, with star progression, unlock tracking, and a level-select vault built to handle scale.</p>
+        </article>
+        <article class="feature">
+          <h3>Infinite Mastery</h3>
+          <p>Infinite mode resets correctly per run, tracks solved boards, and keeps the score chase alive after the fixed campaign route.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Store Screens</h2>
+      <p>Current captures are generated directly from the shipping project layout for App Store submission.</p>
+      <div class="shots">
+        <article class="shot">
+          <img src="media/01-main-menu.png" alt="Blocky Extreme premium main menu screenshot">
+          <div class="shot-copy">
+            <h3>Premium Entrance</h3>
+            <p>Strong paid-edition branding, direct access to campaign and infinite mode, and the upgraded crest-first identity.</p>
+          </div>
+        </article>
+        <article class="shot">
+          <img src="media/02-level-board.png" alt="Blocky Extreme board screenshot">
+          <div class="shot-copy">
+            <h3>Refined In-Game HUD</h3>
+            <p>Stage-based presentation, stronger premium accents, and clearer chips for time, score, hints, and puzzle state.</p>
+          </div>
+        </article>
+        <article class="shot">
+          <img src="media/03-level-complete.png" alt="Blocky Extreme stage complete screenshot">
+          <div class="shot-copy">
+            <h3>Completion Feedback</h3>
+            <p>Vault-style completion messaging, star rewards, and cleaner premium copy on the end-of-stage overlay.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="foot">
+      <span>Blocky Extreme for iPhone and iPad</span>
+      <span>Support: <a href="mailto:ademgcl@gmail.com">ademgcl@gmail.com</a></span>
+    </div>
+  </div>
+</body>
+</html>
