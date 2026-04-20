@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dream Eleven</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0a1210;
+      --panel: rgba(12, 28, 22, 0.82);
+      --panel-strong: rgba(16, 34, 26, 0.92);
+      --line: rgba(100, 255, 170, 0.18);
+      --line-soft: rgba(255,255,255,0.08);
+      --text: #f0fff6;
+      --muted: #a8c4b4;
+      --green: #3de880;
+      --green-soft: rgba(61, 232, 128, 0.16);
+      --gold: #f5c86d;
+      --sky: #8fdcff;
+      --mint: #93f0c3;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(61, 232, 128, 0.14), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(245, 200, 109, 0.12), transparent 22%),
+        linear-gradient(180deg, #0f1e18 0%, var(--bg) 100%);
+    }
+
+    a {
+      color: var(--sky);
+      text-decoration: none;
+    }
+
+    a:hover { color: #d7f3ff; }
+
+    .shell {
+      width: min(1200px, calc(100% - 32px));
+      margin: 24px auto 40px;
+    }
+
+    .nav,
+    .hero,
+    .section,
+    .shot {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      border-radius: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .crest {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      font-weight: 900;
+      color: #0a1a0f;
+      background: linear-gradient(135deg, #a0ffc8, #3de880 60%, #1a8a48);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 10px 30px rgba(61, 232, 128, 0.24);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      margin-top: 18px;
+      padding: 34px;
+      border-radius: 30px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -70px;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(61, 232, 128, 0.18), transparent 64%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: #c0ffd8;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      max-width: 780px;
+      font-size: clamp(42px, 9vw, 84px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+    }
+
+    .lede {
+      max-width: 720px;
+      font-size: 19px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .hero-grid,
+    .feature-grid,
+    .shots {
+      display: grid;
+      gap: 16px;
+    }
+
+    .hero-grid {
+      margin-top: 26px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .stat,
+    .feature,
+    .shot {
+      border-radius: 24px;
+      background: var(--panel-strong);
+      border: 1px solid var(--line-soft);
+    }
+
+    .stat,
+    .feature {
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 32px;
+      letter-spacing: -0.04em;
+    }
+
+    .stat span,
+    .feature p,
+    .section p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .cta,
+    .ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 12px 18px;
+      border-radius: 16px;
+      font-weight: 700;
+    }
+
+    .cta {
+      color: #0a1a0f;
+      background: linear-gradient(135deg, #a0ffc8, #3de880 60%, #1a8a48);
+      box-shadow: 0 12px 30px rgba(61, 232, 128, 0.22);
+    }
+
+    .ghost {
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .section {
+      margin-top: 18px;
+      padding: 28px;
+      border-radius: 28px;
+    }
+
+    .section h2 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+    }
+
+    .feature-grid {
+      margin-top: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .feature h3,
+    .shot h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .shots {
+      margin-top: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .shot {
+      overflow: hidden;
+    }
+
+    .shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #0a1210;
+    }
+
+    .shot-copy {
+      padding: 18px;
+    }
+
+    .foot {
+      margin-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .mint { color: var(--mint); }
+
+    @media (max-width: 720px) {
+      .hero,
+      .section { padding: 22px; }
+      .nav { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav">
+      <div class="brand">
+        <div class="crest">D11</div>
+        <span>Dream Eleven</span>
+      </div>
+      <div class="nav-links">
+        <a href="support/">Support</a>
+        <a href="privacy/">Privacy</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="eyebrow">Anime Football Action</div>
+      <h1>Cinematic football decisions on mobile.</h1>
+      <p class="lede">Dream Eleven is an anime-style football action game where the match flows automatically and you take control at the most dramatic moments — tap to enter slow motion, swipe to commit to killer passes, thunderous shots, and signature finishes.</p>
+
+      <div class="hero-grid">
+        <div class="stat">
+          <strong>Focus Mode</strong>
+          <span>tap to slow time and take over decisive football actions during live play</span>
+        </div>
+        <div class="stat">
+          <strong>Swipe Control</strong>
+          <span>swipe to choose pass, shot, carry, tackle, or signature moves with directional intent</span>
+        </div>
+        <div class="stat">
+          <strong>Spirit Meter</strong>
+          <span>build momentum through plays and unleash special techniques at peak drama</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="cta" href="support/">Get Support</a>
+        <a class="ghost" href="privacy/">Privacy Policy</a>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>How the match plays</h2>
+      <div class="feature-grid">
+        <article class="feature">
+          <h3>Auto Flow, Player Decisions</h3>
+          <p>Footballers move and circulate the ball on their own. The match flows like a broadcast — you step in only when the moment matters.</p>
+        </article>
+        <article class="feature">
+          <h3>Tap to Focus</h3>
+          <p>When you see an opening, tap the screen. Time slows, the HUD sharpens, and you pick the action that turns the play.</p>
+        </article>
+        <article class="feature">
+          <h3>Swipe to Commit</h3>
+          <p>Swipe direction and length decide the outcome — a through-ball, a curling shot, a crunching tackle, or a <span class="mint">signature finish</span>.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Match Systems</h2>
+      <div class="feature-grid">
+        <article class="feature">
+          <h3>Duel Resolution</h3>
+          <p>Attacker vs defender clashes resolve with timing, stats, and swipe quality — creating readable, dramatic outcomes on every encounter.</p>
+        </article>
+        <article class="feature">
+          <h3>Shot and Keeper Clashes</h3>
+          <p>Shots trigger cinematic keeper duels. Power, angle, and spirit investment decide whether the ball hits the net or the gloves push it away.</p>
+        </article>
+        <article class="feature">
+          <h3>Progression and Mastery</h3>
+          <p>Persistent fans, credits, signature shards, and academy-rank progression. Featured mastery objectives with bonus rewards and perfect-sweep tracking.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="foot">
+      <span>Dream Eleven for iPhone and iPad</span>
+      <span>Support: <a href="mailto:ademgcl@gmail.com">ademgcl@gmail.com</a></span>
+    </div>
+  </div>
+</body>
+</html>

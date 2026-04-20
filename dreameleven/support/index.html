@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dream Eleven Support</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0a1210;
+      --panel: rgba(12, 28, 22, 0.82);
+      --panel-strong: rgba(16, 34, 26, 0.92);
+      --line: rgba(100, 255, 170, 0.18);
+      --text: #f0fff6;
+      --muted: #a8c4b4;
+      --green: #3de880;
+      --green-soft: rgba(61, 232, 128, 0.16);
+      --sky: #8fdcff;
+      --mint: #93f0c3;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(61, 232, 128, 0.14), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(245, 200, 109, 0.12), transparent 24%),
+        linear-gradient(180deg, #0f1e18 0%, var(--bg) 100%);
+    }
+
+    a {
+      color: var(--sky);
+      text-decoration: none;
+    }
+
+    a:hover { color: #c5ecff; }
+
+    .shell {
+      width: min(1080px, calc(100% - 32px));
+      margin: 24px auto 40px;
+    }
+
+    .nav,
+    .panel {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      border-radius: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .crest {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      font-weight: 900;
+      color: #0a1a0f;
+      background: linear-gradient(135deg, #a0ffc8, #3de880 60%, #1a8a48);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 10px 30px rgba(61, 232, 128, 0.24);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero {
+      margin-top: 18px;
+      padding: 32px;
+      border-radius: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -20% auto auto 55%;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(61, 232, 128, 0.18), transparent 64%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: #c0ffd8;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(36px, 8vw, 72px);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: var(--panel-strong);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .stack {
+      margin-top: 18px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 12px 18px;
+      border-radius: 16px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #a0ffc8, #3de880 60%, #1a8a48);
+      color: #0a1a0f;
+      box-shadow: 0 12px 30px rgba(61, 232, 128, 0.22);
+    }
+
+    .muted-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 52px;
+      padding: 12px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .accent {
+      color: var(--mint);
+      font-weight: 600;
+    }
+
+    @media (max-width: 720px) {
+      .hero { padding: 24px; }
+      .nav { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav">
+      <div class="brand">
+        <div class="crest">D11</div>
+        <span>Dream Eleven</span>
+      </div>
+      <div class="nav-links">
+        <a href="../">Overview</a>
+        <a href="../privacy/">Privacy</a>
+      </div>
+    </nav>
+
+    <main class="panel hero">
+      <div class="eyebrow">Anime Football Action</div>
+      <h1>Support for the cinematic football experience.</h1>
+      <p>Dream Eleven is an anime-style football action game for iPhone and iPad, built around auto-play flow with tap and swipe control for decisive moments.</p>
+
+      <div class="grid">
+        <section class="card">
+          <h2>Help Contact</h2>
+          <p>For bugs, gameplay issues, or questions, email <a href="mailto:ademgcl@gmail.com">ademgcl@gmail.com</a>.</p>
+        </section>
+        <section class="card">
+          <h2>What To Include</h2>
+          <ul>
+            <li>Your device model and iOS version</li>
+            <li>The match situation or encounter where the issue occurred</li>
+            <li>A short description of what happened</li>
+          </ul>
+        </section>
+        <section class="card">
+          <h2>Response Scope</h2>
+          <p><span class="accent">Gameplay:</span> match flow, swipe actions, spirit meter, encounters, and progression.</p>
+          <p><span class="accent">Technical:</span> launch problems, crashes, save data, and input issues.</p>
+        </section>
+      </div>
+
+      <div class="stack">
+        <section class="card">
+          <h2>Controls Quick Reference</h2>
+          <p>During live play, <strong>tap</strong> to enter Focus Mode and slow time. <strong>Swipe</strong> to commit to a directional action — pass, shot, carry, tackle, or signature finish. Release a tap without swiping for the safer default action.</p>
+        </section>
+      </div>
+
+      <div class="actions">
+        <a class="cta" href="mailto:ademgcl@gmail.com">Email Support</a>
+        <a class="muted-link" href="../privacy/">View Privacy Policy</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

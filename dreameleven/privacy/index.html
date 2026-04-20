@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dream Eleven Privacy Policy</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0a1210;
+      --panel: rgba(12, 28, 22, 0.82);
+      --panel-strong: rgba(16, 34, 26, 0.92);
+      --line: rgba(100, 255, 170, 0.18);
+      --text: #f0fff6;
+      --muted: #a8c4b4;
+      --green: #3de880;
+      --green-soft: rgba(61, 232, 128, 0.16);
+      --sky: #8fdcff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(61, 232, 128, 0.12), transparent 28%),
+        radial-gradient(circle at 82% 10%, rgba(245, 200, 109, 0.10), transparent 22%),
+        linear-gradient(180deg, #0f1e18 0%, var(--bg) 100%);
+    }
+
+    a {
+      color: var(--sky);
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(980px, calc(100% - 32px));
+      margin: 24px auto 40px;
+    }
+
+    .nav,
+    main {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      border-radius: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .crest {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      font-weight: 900;
+      color: #0a1a0f;
+      background: linear-gradient(135deg, #a0ffc8, #3de880 60%, #1a8a48);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 10px 30px rgba(61, 232, 128, 0.24);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    main {
+      margin-top: 18px;
+      padding: 32px;
+      border-radius: 30px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: #c0ffd8;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(34px, 7vw, 60px);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin: 28px 0 10px;
+      font-size: 21px;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 17px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .card {
+      padding: 18px 20px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: var(--panel-strong);
+    }
+
+    @media (max-width: 720px) {
+      main { padding: 24px; }
+      .nav { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav">
+      <div class="brand">
+        <div class="crest">D11</div>
+        <span>Dream Eleven</span>
+      </div>
+      <div class="nav-links">
+        <a href="../">Overview</a>
+        <a href="../support/">Support</a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="eyebrow">Privacy Policy</div>
+      <h1>Dream Eleven keeps your data local.</h1>
+      <p>Effective date: April 20, 2026</p>
+
+      <div class="stack">
+        <section class="card">
+          <h2>Data Collection</h2>
+          <p>Dream Eleven does not collect personal data from players.</p>
+        </section>
+        <section class="card">
+          <h2>Analytics and Tracking</h2>
+          <p>Dream Eleven does not use third-party analytics SDKs, advertising SDKs, or cross-app tracking.</p>
+        </section>
+        <section class="card">
+          <h2>Accounts</h2>
+          <p>Dream Eleven does not require account creation, cloud login, or sign-in to play matches or track progression.</p>
+        </section>
+        <section class="card">
+          <h2>Local Save Data</h2>
+          <p>The game stores progression such as best scores, fans, credits, signature shards, academy rank, and mastery stars locally on the device so the single-player experience works offline.</p>
+        </section>
+        <section class="card">
+          <h2>Contact</h2>
+          <p>For privacy questions, contact <a href="mailto:ademgcl@gmail.com">ademgcl@gmail.com</a>.</p>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
