@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Button Run</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #081016;
+      --panel: rgba(11, 24, 32, 0.84);
+      --panel-strong: rgba(15, 31, 40, 0.94);
+      --line: rgba(99, 234, 255, 0.18);
+      --line-soft: rgba(255,255,255,0.08);
+      --text: #effcff;
+      --muted: #a8bdc5;
+      --cyan: #63eaff;
+      --cyan-soft: rgba(99, 234, 255, 0.15);
+      --lime: #a7ff6f;
+      --pink: #ff6fb1;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(99, 234, 255, 0.14), transparent 28%),
+        radial-gradient(circle at 82% 8%, rgba(255, 111, 177, 0.12), transparent 24%),
+        linear-gradient(180deg, #101a25 0%, var(--bg) 100%);
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+
+    a:hover { color: #d4fbff; }
+
+    .shell {
+      width: min(1200px, calc(100% - 32px));
+      margin: 24px auto 40px;
+    }
+
+    .nav,
+    .hero,
+    .section,
+    .shot {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      border-radius: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(99, 234, 255, 0.22);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      margin-top: 18px;
+      padding: 34px;
+      border-radius: 30px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--cyan-soft);
+      color: #cbfbff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      max-width: 780px;
+      font-size: clamp(42px, 9vw, 84px);
+      line-height: 0.94;
+      letter-spacing: -0.04em;
+    }
+
+    .lede {
+      max-width: 720px;
+      font-size: 19px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .hero-grid,
+    .feature-grid,
+    .shots {
+      display: grid;
+      gap: 16px;
+    }
+
+    .hero-grid {
+      margin-top: 26px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .stat,
+    .feature,
+    .shot {
+      border-radius: 24px;
+      background: var(--panel-strong);
+      border: 1px solid var(--line-soft);
+    }
+
+    .stat,
+    .feature {
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 32px;
+      letter-spacing: -0.03em;
+    }
+
+    .stat span,
+    .feature p,
+    .section p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .cta,
+    .ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 12px 18px;
+      border-radius: 16px;
+      font-weight: 700;
+    }
+
+    .cta {
+      color: #031217;
+      background: linear-gradient(135deg, #d5fbff, #63eaff 62%, #32a2ff);
+      box-shadow: 0 12px 30px rgba(99, 234, 255, 0.22);
+    }
+
+    .ghost {
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .section {
+      margin-top: 18px;
+      padding: 28px;
+      border-radius: 28px;
+    }
+
+    .section h2 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+    }
+
+    .feature-grid {
+      margin-top: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .feature h3,
+    .shot h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .shots {
+      margin-top: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .shot {
+      overflow: hidden;
+    }
+
+    .shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #081016;
+    }
+
+    .shot-copy {
+      padding: 18px;
+    }
+
+    .foot {
+      margin-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .lime { color: var(--lime); }
+    .pink { color: var(--pink); }
+
+    @media (max-width: 720px) {
+      .hero,
+      .section { padding: 22px; }
+      .nav { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav">
+      <div class="brand">
+        <img src="media/icon-1024.png" alt="">
+        <span>Button Run</span>
+      </div>
+      <div class="nav-links">
+        <a href="support/">Support</a>
+        <a href="privacy/">Privacy</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="eyebrow">One-Tap Timing Runner</div>
+      <h1>Press once, phase clean, keep running.</h1>
+      <p class="lede">Button Run is a fast arcade timing game where the runner never stops. Wait for the exact beat, tap the phase button, and slip through lasers, crushers, gates, and risky token routes.</p>
+
+      <div class="hero-grid">
+        <div class="stat">
+          <strong>One Button</strong>
+          <span>tap at the right moment to activate a tiny phase window</span>
+        </div>
+        <div class="stat">
+          <strong>Fast Rooms</strong>
+          <span>short skill tests with instant retries and clean readable hazards</span>
+        </div>
+        <div class="stat">
+          <strong>Perfect Clears</strong>
+          <span>chase medals, risk tokens, and one-more-room momentum offline</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="cta" href="support/">Get Support</a>
+        <a class="ghost" href="privacy/">Privacy Policy</a>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>Built around the button</h2>
+      <div class="feature-grid">
+        <article class="feature">
+          <h3>Automatic Running</h3>
+          <p>Your runner moves on their own. Your job is to read the room and commit to the one tap that gets through cleanly.</p>
+        </article>
+        <article class="feature">
+          <h3>Phase Timing</h3>
+          <p>The phase window is brief. Use it to pass through hazards, then land back in rhythm before the next obstacle arrives.</p>
+        </article>
+        <article class="feature">
+          <h3>Risk Routes</h3>
+          <p>Optional token paths and medal goals reward precise timing without adding extra controls or account requirements.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Screenshots</h2>
+      <div class="shots">
+        <article class="shot">
+          <img src="media/01-menu-hook.png" alt="Button Run main menu screenshot">
+          <div class="shot-copy">
+            <h3>Clean Start</h3>
+            <p>Jump into fast rooms built for short arcade sessions.</p>
+          </div>
+        </article>
+        <article class="shot">
+          <img src="media/02-real-gameplay.png" alt="Button Run laser timing gameplay screenshot">
+          <div class="shot-copy">
+            <h3>Neon Hazards</h3>
+            <p>Read lasers and moving obstacles before you press.</p>
+          </div>
+        </article>
+        <article class="shot">
+          <img src="media/03-real-gameplay.png" alt="Button Run phase route gameplay screenshot">
+          <div class="shot-copy">
+            <h3>Perfect Routes</h3>
+            <p>Use timing guides, risk tokens, and clean passes to improve each clear.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="foot">
+      <span>Button Run for iPhone and iPad</span>
+      <span>Support: <a href="mailto:ademgcl@gmail.com">ademgcl@gmail.com</a></span>
+    </div>
+  </div>
+</body>
+</html>
